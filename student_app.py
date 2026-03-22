@@ -1,35 +1,30 @@
 import streamlit as st
-import csv
+from student_data_csv import save_student, read_students
 
 st.title("Student Management System")
 
-# Function to save data
-def save_student(name, age):
-    with open("students.csv", "a", newline="") as file:
-        writer = csv.writer(file)
-        writer.writerow([name, age])
+menu = st.sidebar.selectbox("Menu", ["Add Student", "View Students"])
 
-# Function to read data
-def read_students():
-    students = []
-    try:
-        with open("students.csv", "r") as file:
-            reader = csv.reader(file)
-            for row in reader:
-                students.append(row)
-    except:
-        pass
-    return students
+if menu == "Add Student":
+    st.subheader("Add New Student")
+    
+    name = st.text_input("Enter Name")
+    age = st.text_input("Enter Age")
 
-# Input fields
-name = st.text_input("Enter Name")
-age = st.text_input("Enter Age")
+    if st.button("Add"):
+        if name and age:
+            save_student(name, age)
+            st.success("Student Added Successfully")
+        else:
+            st.warning("Please fill all fields")
 
-if st.button("Add Student"):
-    save_student(name, age)
-    st.success("Student Added!")
-
-if st.button("Show Students"):
-    data = read_students()
-    for student in data:
-        st.write(student)
+elif menu == "View Students":
+    st.subheader("Student List")
+    
+    students = read_students()
+    
+    if students:
+        for s in students:
+            st.write("Name:", s[0], "Age:", s[1])
+    else:
+        st.write("No student data found")
