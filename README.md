@@ -1,24 +1,30 @@
 # Student Management System
 
 ## Description
-Yeh ek simple Python project hai jo student data ko manage karta hai.
+This is a simple Streamlit-based web application to manage student data. Users can add and view student details, which are stored in a CSV file.
 
 ## Features
-- Student add karna
-- Student data dekhna
-- CSV file me data save karna
+- Add student details
+- View student list
+- Data stored in CSV file
 
-## Files
-- student (1).py → main program
-- student_data_csv.py → CSV handle karta hai
-- requirements.txt → dependencies list
+## Technologies Used
+- Python
+- Streamlit
+
+## Project Structure
+- student_app.py
+- student_data_csv.py
+- students.csv
+- requirements.txt
 
 ## How to Run
-1. Python install karo
-2. Dependencies install karo:
-   pip install -r requirements.txt
-3. Program run karo:
-   python student (1).py
+
+1. Install dependencies:
+pip install -r requirements.txt
+
+2. Run the app:
+streamlit run student_app.py
 
 ## Author
-Tumhara naam
+Your Name
